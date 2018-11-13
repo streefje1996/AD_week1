@@ -1,3 +1,12 @@
+"""
+Stefan van der Ham
+1717534
+V2C
+Frits Dannenberg
+"""
+
+
+
 import random
 
 """
