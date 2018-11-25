@@ -51,11 +51,14 @@ def getnumbers(s):
     lst = []
     temp = ''
     for element in s:
-        if element > '0' and element < '9':
+        if element >= '0' and element <= '9':
             temp += element
         elif temp != '':
             lst.append(int(temp))
             temp = ''
+
+    if temp != '':
+        lst.append(int(temp))
     return lst
 
 """
@@ -74,22 +77,25 @@ Return
 p: list
 containing all the prime numbers
 """
-def getPrime(p):
-    prime = []
-    lst = []
-    for i in range(len(p)):
-        if p[i] not in lst:
-            prime.append(p[i])
-            result = p[i]
-            for j in range(len(p)):
-                result += p[i]
-                if result > 1000:
-                    break
-                lst.append(result)
-    lst = set(lst)
-    for element in lst:
-        p.remove(element)
-    return p
+def getPrime(N):
+    primeNums = []
+
+    numbers = {}
+    for i in range(2,N+1):
+        numbers[i] = True
+
+    for i in numbers:
+        for j in range(2, N+1):
+            if(i * j < N+1):
+                numbers[i*j] = False
+            else:
+                break
+
+    for x, y in numbers.items():
+        if(y):
+            primeNums.append(x)
+
+    return primeNums
         
 """
 description
@@ -111,7 +117,7 @@ def BirthDayParadox():
     for i in range(100):
         lstlst = []
         for j in range(23):
-            lstlst.append(random.randint(0,365))
+            lstlst.append(random.randint(0,364))
         lst.append(lstlst)
     count = 0
     
@@ -162,15 +168,15 @@ def next_las_seq(x):
 
     
 
-lijst = []
-for i in range(2,1001):
-    lijst.append(i)
+getallen = list(range(2,1001))
 
 haha = [3,3,4,1,1,6,6,6,2,2]
 
 print(next_las_seq(haha))
 
-print(getPrime(lijst))
+print(getPrime(10001))
 
 print (BirthDayParadox())
+
+print(getnumbers("77ga8a9ga7")) 
 
