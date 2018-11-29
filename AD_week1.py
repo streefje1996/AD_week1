@@ -113,22 +113,23 @@ count: int
 amount of times the list is matching
 """
 def BirthDayParadox():
-    lst = []
+    klassen = []
     for i in range(100):
-        lstlst = []
+        studenten = []
         for j in range(23):
-            lstlst.append(random.randint(0,364))
-        lst.append(lstlst)
+            studenten.append(random.randint(0,364))
+        klassen.append(studenten)
     count = 0
-    
-    for i in range(len(lst) - 1):
 
-        for j in range(len(lst[i])):
-            
-            for k in range(len(lst[i+1])):
-                if lst[i][j] == lst[i+1][k]:
-                    count+=1
-                    break
+    
+    for klas in klassen:
+        dagen = [0] * 365
+        for student in klas:
+            if dagen[student] > 1:
+                count += 1
+                break
+            else:
+                dagen[student] += 1
 
     return count
 
