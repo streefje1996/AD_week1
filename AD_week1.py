@@ -125,7 +125,7 @@ def BirthDayParadox():
     for klas in klassen:
         dagen = [0] * 365
         for student in klas:
-            if dagen[student] > 1:
+            if dagen[student] > 0:
                 count += 1
                 break
             else:
